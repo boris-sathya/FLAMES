@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 name1 = " "
 name2 = " "
 name2bkup = " "
@@ -10,12 +11,18 @@ def getnames():
     global name1, name2
     name1 = raw_input('Enter your name: ')
     name2 = raw_input('Enter the second name: ')
-  
-#Module to calculate the number to be used in FLAMES
+    if not name1 or not name2:
+        print 'Enter a valid name, please!'
+        sys.exit()
+ 
+#Module to calculate the number to be used in FLAMES also converts string to lower case
+#and strips of whitespaces inbetween the name
 def calculate():
     global name1, name2,name2bkup, out
     name1 = name1.lower()
     name2 = name2.lower()
+    name1 = name1.replace(' ','')
+    name2 = name2.replace(' ','')
     name2bkup = name2
     count = 0    #Initializing count, should update to use __init__ soon
     name_length = len(name1) + len(name2)
